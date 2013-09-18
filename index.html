@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Namnlöst dokument</title>
+
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+function myFunction2(form) {
+	
+var p = form.p.value;
+var q = form.q.value;
+var i="";
+
+var pFirst = (p/2)*-1;
+var qFirst = q*(-1);
+
+var pSquare = pFirst*pFirst;
+var squareSum = pSquare + qFirst;
+
+if(squareSum<0 || p==q){
+	var squareSum =squareSum *(-1);
+	i="i";
+}
+
+
+var after = Math.sqrt(squareSum);
+
+var x1 =pFirst + after;
+var x2 =pFirst - after;
+
+
+	if(isNaN(x1)){
+		document.getElementById("svar1").innerHTML="error";
+	} else {
+	document.getElementById("svar1").innerHTML="x<sub>1</sub> = " +x1 + i; 
+	}
+	
+	if(isNaN(x2)){
+		document.getElementById("svar2").innerHTML="error";
+	} else {
+	document.getElementById("svar2").innerHTML="x<sub>2</sub> = " +x2+ i; 
+	}
+
+};
+
+
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+<form action="" method="post" class="input">
+		<h1>x<sup>2</sup> + <input type="text" name="p" style="width:30px; height:30px;"/> x + <input type="text" name="q" style="width:30px; height:30px;"/> = 0</h1>
+
+		<input type="button" value="beräkna" class="button" onClick="myFunction2(this.form)" />
+	</form>
+
+<p id="svar1"></p>
+<p id="svar2"></p>
+</div>
+</body>
+</html>
