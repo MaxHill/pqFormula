@@ -9,9 +9,17 @@
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript">
 function myFunction2(form) {
-	
+
+var x1 ="";
+var x2 ="";
+
 var p = form.p.value;
 var q = form.q.value;
+var valid = true;
+
+if(isNaN(p)||isNaN(q)){
+	valid=false;
+}else{
 var i="";
 
 var pFirst = (p/2)*-1;
@@ -23,26 +31,31 @@ var squareSum = pSquare + qFirst;
 if(squareSum<0 || p==q){
 	var squareSum =squareSum *(-1);
 	i="i";
+	
+	var after = Math.sqrt(squareSum);
+	var x1 =pFirst +"+"+ after;
+	var x2 =pFirst +"-"+ after;
+
+}else{
+	var after = Math.sqrt(squareSum);
+	var x1 =pFirst + after;
+	var x2 =pFirst - after;
+	}
+
 }
 
 
-var after = Math.sqrt(squareSum);
-
-var x1 =pFirst + after;
-var x2 =pFirst - after;
 
 
-	if(isNaN(x1)){
+
+	if(!valid){
 		document.getElementById("svar1").innerHTML="error";
-	} else {
-	document.getElementById("svar1").innerHTML="x<sub>1</sub> = " +x1 + i; 
-	}
-	
-	if(isNaN(x2)){
 		document.getElementById("svar2").innerHTML="error";
 	} else {
+	document.getElementById("svar1").innerHTML="x<sub>1</sub> = " +x1 + i; 
 	document.getElementById("svar2").innerHTML="x<sub>2</sub> = " +x2+ i; 
 	}
+
 
 };
 
